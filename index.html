@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marvel Characters</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <section class="nav-bar-section">
+      <div class="nav-bar">
+        <div id="search-container">
+          <input id="search-input" type="text" placeholder="Character" />
+          <a
+            onclick="saveSearchName()"
+            type="button"
+            href="character.html"
+            target="_blank"
+            id="search-btn"
+            class="btn"
+          >
+            Search
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="title">
+      <h1 id="title">MARVEL UNIVERSE CHARACTERS</h1>
+    </section>
+    <section class="main">
+      <div class="characters-container">
+        <ul class="character-list"></ul>
+        <button
+          onclick="fetchCharacters(currentOffset)"
+          id="more-btn"
+          class="btn"
+        >
+          Ver mas
+        </button>
+      </div>
+    </section>
+    <script src="landing.js"></script>
+  </body>
+</html>

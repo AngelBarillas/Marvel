@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(38, 38, 38);
+}
+.title {
+  text-align: center;
+  color: red;
+  border: none;
+  border-radius: 1rem;
+  margin: 1em;
+}
+.character-list {
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr;
+  grid-column-gap: 1em;
+  border-style: none;
+  background: whitesmoke;
+  border-radius: 1rem;
+  padding: 1.5em;
+  margin: 1rem;
+}
+
+.list-item {
+  display: grid;
+  list-style: none;
+  color: slategrey;
+  line-height: 2rem;
+}
+
+img {
+  border-style: none;
+  border-radius: 2rem;
+}
+
+.btn {
+  background: slategray;
+  border: none;
+  border-radius: 2rem;
+  color: whitesmoke;
+}
+
+#more-btn {
+  margin: 1rem;
+  font-size: small;
+}
+
+#search-container {
+  display: grid;
+  grid-template-columns: 60% 25% 15%;
+  margin: 1rem;
+}
+
+#search-btn {
+  grid-column: 3;
+  cursor: pointer;
+  margin: 0.5em;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: small;
+}
+
+#search-input {
+  grid-column: 2;
+  border: none;
+  border-radius: 3px;
+  background-color: whitesmoke;
+  opacity: 90%;
+  margin: 0.3rem;
+}
+
+#character-container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 1fr 90%;
+  grid-column-gap: 1.5em;
+  background: whitesmoke;
+  border: none;
+  border-radius: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 15%;
+}
+#name-container {
+  color: rgb(38, 38, 38);
+  grid-column: 1;
+  grid-row: 1;
+  margin: 2em;
+  white-space: nowrap;
+}
+#desc-container {
+  color: rgb(38, 38, 38);
+  grid-column: 2;
+  grid-row: 2;
+  margin: 2.5em;
+}
+
+#img-container {
+  grid-row: 2;
+  grid-column: 1;
+  margin: 2em;
+}
+
+@media only screen and (min-width: 768px) {
+  .character-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 4em;
+    grid-row-gap: 2em;
+    margin: 2em;
+    padding-left: 5em;
+  }
+
+  #search-container {
+    grid-template-columns: 80% 15% 5%;
+  }
+  #character-container {
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 1fr 90%;
+    grid-column-gap: 1.5em;
+    margin: 10em;
+  }
+  #img-container {
+    grid-row: 2;
+    grid-column: 1;
+    margin-left: 6em;
+  }
+  #name-container {
+    margin-left: 6em;
+  }
+  #search-char-desc {
+    padding-right: 3em;
+    margin-right: 3em;
+  }
+  #search-char-img {
+    margin-bottom: 4em;
+  }
+}
