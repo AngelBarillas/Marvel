@@ -25,6 +25,7 @@ const fetchCharacters = async function () {
       const li = document.createElement("li");
       const span = document.createElement("span");
       const image = document.createElement("img");
+      const a = document.createElement("a");
       ul.append(li);
       li.setAttribute("id", `list-item${i}`);
       li.setAttribute("class", "list-item");
@@ -32,9 +33,14 @@ const fetchCharacters = async function () {
       li.append(span);
       span.setAttribute("id", `char-img-container${i}`);
       span.setAttribute("class", `char-img-container`);
-      li.append(span);
-      span.setAttribute("id", `char-name-text${i}`);
-      span.innerText = `${charactersNames[i]}`;
+      li.append(a);
+      a.setAttribute("id", `char-name-text${i}`);
+      a.setAttribute("class", "char-name");
+      a.setAttribute(
+        "href",
+        `character.html?charNameValue=${charactersNames[i]}`
+      );
+      a.innerText = `${charactersNames[i]}`;
       image.setAttribute("id", `character-img${i}`);
       image.setAttribute("src", `${charactersImg[i]}`);
       image.setAttribute("alt", `image of ${charactersNames[i]}`);
@@ -47,7 +53,12 @@ const fetchCharacters = async function () {
 
 fetchCharacters();
 
-const saveSearchName = function () {
-  searchName = document.getElementById("search-input").value;
-  localStorage.setItem("charName", `${searchName}`);
+const saveSearchName = function (a) {
+  if (document.getElementById("search-input").value) {
+    searchName = document.getElementById("search-input").value;
+    localStorage.setItem("charName", `${searchName}`);
+  } else {
+    searchName = a;
+    localStorage.setItem("charName", `${searchName}`);
+  }
 };

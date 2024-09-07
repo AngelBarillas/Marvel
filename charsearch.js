@@ -1,4 +1,15 @@
-const charNameValue = localStorage.getItem("charName");
+let charNameValue = "";
+const queryString = window.location.search;
+console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
+const name = urlParams.get("charNameValue");
+console.log(charNameValue);
+
+if (localStorage.getItem("charName")) {
+  charNameValue = localStorage.getItem("charName");
+} else {
+  charNameValue = name;
+}
 console.log(charNameValue);
 
 const fetchOneCharacter = async function (charNameValue) {
@@ -30,3 +41,4 @@ const fetchOneCharacter = async function (charNameValue) {
 };
 
 fetchOneCharacter(charNameValue);
+localStorage.clear();
