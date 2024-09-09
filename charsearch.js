@@ -1,21 +1,21 @@
-let charNameValue = "";
+let charIdValue = "";
 const queryString = window.location.search;
 console.log(queryString);
 const urlParams = new URLSearchParams(queryString);
-const name = urlParams.get("charNameValue");
-console.log(charNameValue);
+const id = urlParams.get("charIdValue");
+console.log(id);
 
-if (localStorage.getItem("charName")) {
-  charNameValue = localStorage.getItem("charName");
-} else {
-  charNameValue = name;
-}
-console.log(charNameValue);
+//if (localStorage.getItem("charName")) {
+charNameValue = localStorage.getItem("charName");
+//} else {
+// charNameValue = name;
+//}
+//console.log(charNameValue);
 
-const fetchOneCharacter = async function (charNameValue) {
+const fetchOneCharacter = async function (id) {
   try {
     const response = await fetch(
-      `https://gateway.marvel.com/v1/public/characters?name=${charNameValue}&limit=1&apikey=c5b21bcd83f9cb497db19d4a57fb1837`
+      `https://gateway.marvel.com/v1/public/characters/${id}?apikey=c5b21bcd83f9cb497db19d4a57fb1837`
     );
     const {
       data: { results: character },
@@ -40,5 +40,5 @@ const fetchOneCharacter = async function (charNameValue) {
   }
 };
 
-fetchOneCharacter(charNameValue);
-localStorage.clear();
+fetchOneCharacter(id);
+//localStorage.clear();

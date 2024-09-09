@@ -17,7 +17,7 @@ const fetchCharacters = async function () {
 
     for (let i = 0; i < characters.length; i++) {
       charactersNames.push(characters[i].name);
-      charactersImg.push(`${characters[i].thumbnail.path}/portrait_xlarge.jpg`);
+      //charactersImg.push(`${characters[i].thumbnail.path}/portrait_xlarge.jpg`);
       charactersDesc.push(characters[i].description);
 
       console.log(charactersNames[i]);
@@ -36,13 +36,13 @@ const fetchCharacters = async function () {
       li.append(a);
       a.setAttribute("id", `char-name-text${i}`);
       a.setAttribute("class", "char-name");
-      a.setAttribute(
-        "href",
-        `character.html?charNameValue=${charactersNames[i]}`
-      );
-      a.innerText = `${charactersNames[i]}`;
+      a.setAttribute("href", `character.html?charIdValue=${characters[i].id}`);
+      a.innerText = characters[i].name;
       image.setAttribute("id", `character-img${i}`);
-      image.setAttribute("src", `${charactersImg[i]}`);
+      image.setAttribute(
+        "src",
+        `${characters[i].thumbnail.path}/portrait_xlarge.jpg`
+      );
       image.setAttribute("alt", `image of ${charactersNames[i]}`);
     }
     currentOffset = currentOffset + data.data.count;
