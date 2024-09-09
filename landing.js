@@ -11,16 +11,7 @@ const fetchCharacters = async function () {
     const characters = data.data.results;
     console.log(characters);
 
-    const charactersNames = new Array();
-    const charactersImg = new Array();
-    const charactersDesc = new Array();
-
     for (let i = 0; i < characters.length; i++) {
-      charactersNames.push(characters[i].name);
-      //charactersImg.push(`${characters[i].thumbnail.path}/portrait_xlarge.jpg`);
-      charactersDesc.push(characters[i].description);
-
-      console.log(charactersNames[i]);
       const ul = document.querySelector(".character-list");
       const li = document.createElement("li");
       const span = document.createElement("span");
@@ -43,7 +34,7 @@ const fetchCharacters = async function () {
         "src",
         `${characters[i].thumbnail.path}/portrait_xlarge.jpg`
       );
-      image.setAttribute("alt", `image of ${charactersNames[i]}`);
+      image.setAttribute("alt", `image of ${characters[i].name}`);
     }
     currentOffset = currentOffset + data.data.count;
   } catch (error) {
