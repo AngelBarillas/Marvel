@@ -1,5 +1,4 @@
 let currentOffset = 0;
-let searchName = "";
 
 const fetchCharacters = async function () {
   try {
@@ -44,12 +43,49 @@ const fetchCharacters = async function () {
 
 fetchCharacters();
 
-const saveSearchName = function (a) {
+const saveSearchName = function () {
   if (document.getElementById("search-input").value) {
-    searchName = document.getElementById("search-input").value;
-    localStorage.setItem("charName", `${searchName}`);
-  } else {
-    searchName = a;
-    localStorage.setItem("charName", `${searchName}`);
+    const searchName = document.getElementById("search-input").value;
+    searchCharacters(searchName);
+  }
+};
+
+const searchCharacters = async function (searchName) {
+  try {
+    const response = await fetch(
+      `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchName}&apikey=c5b21bcd83f9cb497db19d4a57fb1837`
+    );
+    const data = await response.json();
+    console.log(data);
+    const characters = data.data.results;
+    console.log(characters);
+
+    for (let i = 0; i < characters.length; i++) {
+      const ul = document.querySelector(".character-list");
+      const li = document.createElement("li");
+      const span = document.createElement("span");
+      const image = document.createElement("img");
+      const a = document.createElement("a");
+      ul.append(li);
+      li.setAttribute("id", `list-item${i}`);
+      li.setAttribute("class", "list-item");
+      li.append(image);
+      li.append(span);
+      span.setAttribute("id", `char-img-container${i}`);
+      span.setAttribute("class", `char-img-container`);
+      li.append(a);
+      a.setAttribute("id", `char-name-text${i}`);
+      a.setAttribute("class", "char-name");
+      a.setAttribute("href", `character.html?charIdValue=${characters[i].id}`);
+      a.innerText = characters[i].name;
+      image.setAttribute("id", `character-img${i}`);
+      image.setAttribute(
+        "src",
+        `${characters[i].thumbnail.path}/portrait_xlarge.jpg`
+      );
+      image.setAttribute("alt", `image of ${characters[i].name}`);
+    }
+  } catch (error) {
+    console.log(`there was an error with the request: ${error}`);
   }
 };
