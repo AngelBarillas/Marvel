@@ -43,6 +43,7 @@ img {
 #more-btn {
   margin: 1rem;
   font-size: small;
+  cursor: pointer;
 }
 
 #search-container {

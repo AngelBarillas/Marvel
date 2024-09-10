@@ -27,6 +27,7 @@ const fetchCharacters = async function () {
       a.setAttribute("id", `char-name-text${i}`);
       a.setAttribute("class", "char-name");
       a.setAttribute("href", `character.html?charIdValue=${characters[i].id}`);
+      a.setAttribute("target", "_blank");
       a.innerText = characters[i].name;
       image.setAttribute("id", `character-img${i}`);
       image.setAttribute(
@@ -82,6 +83,7 @@ const searchCharacters = async function (searchName) {
       a.setAttribute("id", `char-name-text${i}`);
       a.setAttribute("class", "char-name");
       a.setAttribute("href", `character.html?charIdValue=${characters[i].id}`);
+      a.setAttribute("target", "_blank");
       a.innerText = characters[i].name;
       image.setAttribute("id", `character-img${i}`);
       image.setAttribute(
