@@ -50,7 +50,12 @@ const saveSearchName = function () {
   }
 };
 
+const deleteChild = function () {
+  let e = document.querySelector("ul");
+  e.innerHTML = "";
+};
 const searchCharacters = async function (searchName) {
+  deleteChild();
   try {
     const response = await fetch(
       `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchName}&apikey=c5b21bcd83f9cb497db19d4a57fb1837`
