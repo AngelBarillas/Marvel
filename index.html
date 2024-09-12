@@ -10,7 +10,12 @@
     <section class="nav-bar-section">
       <div class="nav-bar">
         <div id="search-container">
-          <input id="search-input" type="text" placeholder="Character" />
+          <input
+            onchange="saveSearchName(), searchCharacters()"
+            id="search-input"
+            type="text"
+            placeholder="Character"
+          />
           <a
             onclick="saveSearchName(), searchCharacters()"
             type="button"

@@ -60,12 +60,11 @@ const deleteChild = function () {
 const searchCharacters = async function (searchName) {
   deleteChild();
   try {
-    const response = await fetch(
+    const response = await axios.get(
       `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchName}&apikey=c5b21bcd83f9cb497db19d4a57fb1837`
     );
-    const data = await response.json();
-    console.log(data);
-    const characters = data.data.results;
+
+    const characters = response.data.data.results;
     console.log(characters);
 
     for (let i = 0; i < characters.length; i++) {
