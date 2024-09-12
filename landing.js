@@ -47,6 +47,9 @@ const saveSearchName = function () {
   if (document.getElementById("search-input").value) {
     const searchName = document.getElementById("search-input").value;
     searchCharacters(searchName);
+  } else {
+    currentOffset = 0;
+    fetchCharacters();
   }
 };
 
