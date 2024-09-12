@@ -1,13 +1,11 @@
 let currentOffset = 0;
-
 const fetchCharacters = async function () {
   try {
-    const response = await fetch(
+    const response = await axios.get(
       `https://gateway.marvel.com/v1/public/characters?offset=${currentOffset}&apikey=c5b21bcd83f9cb497db19d4a57fb1837`
     );
-    const data = await response.json();
-    console.log(data);
-    const characters = data.data.results;
+    console.log(response);
+    const characters = response.data.data.results;
     console.log(characters);
 
     for (let i = 0; i < characters.length; i++) {
@@ -36,12 +34,13 @@ const fetchCharacters = async function () {
       );
       image.setAttribute("alt", `image of ${characters[i].name}`);
     }
-    currentOffset = currentOffset + data.data.count;
+    console.log(response.data.data.count);
+    currentOffset = currentOffset + response.data.data.count;
+    return currentOffset;
   } catch (error) {
     console.log(`there was an error with the request: ${error}`);
   }
 };
-
 fetchCharacters();
 
 const saveSearchName = function () {
